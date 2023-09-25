@@ -5,50 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - CitaFacil</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/CitaFacil.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/CitaFacil.style.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="home" asp-action="Index">CitaFacil</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Acerca De</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Registrar_Cliente" asp-action="Create">Registrar</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Registrarse</a>
-                        </li>
+    <header class="header">
+        <div class="container">
+            <div class="menu">
+                <a href="#" class="logo"><img src="~/img/Logo.png" width="128"height="64" /></a>
+                <input type="checkbox" id="menu">
+                <label for="menu">
+                    <img src="~/img/menu.png" class="menu-icono" alt="" />
+                </label>
+                <nav class="nav">
+                    <ul>
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#">Acerca de Nosotros</a></li>
+                        <li><a href="#">Nuestros Servicios</a></li>
+                        <li><a href="#">Contacto</a></li>
+                        <li><a href="#">Iniciar Sesión</a></li>
+                        <li><a href="~/Views/Account/Register.cshtml">Registrarse</a></li>
                     </ul>
-                </div>
+                </nav>
             </div>
-        </nav>
-    </header>
-    <section id="hero">
-        <div class="hero-container">
-            <h1>Bienvenido a CitaFacil</h1>
-            <h2>La forma más fácil de agendar citas</h2>
-            <a href="" class="btn-get-started scrollto">Empezar</a>
+            <div>
+                @RenderSection("menu_navegacion")
+            </div>
         </div>
-    </section>
+    </header>
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; @DateTime.Now.Year - CitaFacil </a>
+            &copy; @DateTime.Now.Year - CitaFacil
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

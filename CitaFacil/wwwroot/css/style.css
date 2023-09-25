@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+/*
+font-family: 'Bebas Neue', sans-serif;
+font-family: 'Poppins', sans-serif;
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ebe3e3;
+}
+
+img{
+    max-width: 100%;
+}
+
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+.logo {
+    color: #000080;
+    font-size: 25px;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+.menu .nav ul{
+    display: flex;
+}
+
+.menu .nav ul li a {
+    font-size: 18px;
+    padding: 0 20px;
+    color: #000080;
+    display: block;
+    font-weight: 600;
+}
+
+.menu .navbar ul li a:hover{
+    color: #3EC4FF;
+}
+
+#menu{
+    display: none;
+}
+
+.menu-icono{
+    width: 25px;
+}
+
+.menu label{
+    cursor: pointer;
+    display: none;
+}
+
+.header-content{
+    display: flex;
+    padding: 80px 0 0 0;
+}
+
+.header-txt{
+    flex-basis: 50%;
+    padding-right: 30px;
+}
+
+.header-txt span{
+    font-size: 20px;
+    text-transform: capitalize;
+    color: #800080;
+    font-weight: 600;
+    margin-block:15px;
+    display: block;
+}
+
+.header-txt h1{
+    font-size: 70px;
+    line-height:1;
+    color: #000080;
+    font-family: 'Bebas Neue', sans-serif;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 18px;
+    color: #212F3C;
+    margin-bottom: 50px;
+}
+
+.btn-1 {
+    display: inline-block;
+    padding: 10px 30px;
+    background-color: #000080;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 16px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(33, 40, 105, 0.2) ;
+}
+
+.header-img {
+    flex-basis: 50%;
+}
+
+.brands {
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 25px;
+    box-shadow: 0 15px 20px rgba(33, 40, 105, 0.2);
+}
+
+.brands-1 {
+    flex-basis: calc(25% - 50px);
+}
+
+.brands-1 p{
+    font-size: 25px;
+    line-height: 1;
+    font-weight: 600;
+    color: #000080;
+    margin: 0;
+}
+
+.brands-1 img{
+    width: 150%;
+}
+
+.services{
+    padding: 100px 0;
+    text-align: center;
+}
+
+h2{
+    font-size: 40px;
+    color: #000080;
+    line-height: 1;
+    margin-bottom: 20px;
+}
+
+.services-content {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.services-1 {
+    flex-basis: calc(50% - 10px);
+    background-color: #fbfcfe;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(33, 40, 105, 0.2);
+    border-radius: 25px;
+    color: #000080;
+}
+
+.services-1 img{
+    width: 128px;
+    height: 128px;
+    margin-bottom: 20px;
+}
+
+.services-1 h3{
+    font-size: 20px;
+    line-height: 1.2;
+}
+
+.about {
+    padding: 80px 0;
+    background-color: #ffffff;
+    border-radius: 25px;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+}
+
+.about-txt{
+    flex-basis: 50%;
+    padding-right: 80px;
+}
+
+.about-img {
+    flex-basis: 50%;
+}
+
+.contact {
+    padding: 120px 0;
+    border-radius: 25px;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+input {
+    width: 300px;
+    padding: 17px;
+    border: 0;
+    outline: none;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(33, 40, 105, 0.2);
+    margin-right: 20px;
+}
+
+.footer {
+    padding: 50px 0;
+    background-color: #0d0541;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.link h3 {
+    font-size: 18px;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
