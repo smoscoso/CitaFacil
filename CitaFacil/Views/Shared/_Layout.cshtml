@@ -19,17 +19,14 @@
                 </label>
                 <nav class="nav">
                     <ul>
-                        <li><a href="#">Inicio</a></li>
+                        <li><a asp-controller="Home" asp-action="Index">Inicio</a></li>
                         <li><a href="#">Acerca de Nosotros</a></li>
                         <li><a href="#">Nuestros Servicios</a></li>
                         <li><a href="#">Contacto</a></li>
                         <li><a href="#">Iniciar Sesión</a></li>
-                        <li><a href="~/Views/Account/Register.cshtml">Registrarse</a></li>
+                        <li><a asp-controller="Registrar_Cliente" asp-action="Create">Registro Cliente</a></li>
                     </ul>
                 </nav>
-            </div>
-            <div>
-                @RenderSection("menu_navegacion")
             </div>
         </div>
     </header>
