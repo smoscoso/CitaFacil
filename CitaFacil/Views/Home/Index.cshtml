@@ -10,6 +10,25 @@
 </head>
 <body>
     <header class="header">
+        <div class="container">
+            <div class="menu">
+                <a asp-controller="Home" asp-action="Index" class="logo"><img src="~/img/Logo.png" width="128" height="64" /></a>
+                <input type="checkbox" id="menu">
+                <label for="menu">
+                    <img src="~/img/menu.png" class="menu-icono" alt="" />
+                </label>
+                <nav class="nav">
+                    <ul>
+                        <li><a asp-controller="Home" asp-action="Index">Inicio</a></li>
+                        <li><a href="#">Iniciar Sesión</a></li>
+                        <li><a asp-controller="Registrar_Cliente" asp-action="Create">Registro Cliente</a></li>
+                        <li><a asp-controller="Registrar_Negocio" asp-action="Create">Registro Negocio</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <header class="header">
         <div class="header-content">
             <div class="header-txt">
                 <span>
