@@ -1,75 +1,71 @@
 ﻿@model CitaFacil.Models.Registrar_Cliente
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Registro Clientes";
 }
 
-<h1>Create</h1>
 
-<h4>Registrar_Cliente</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Correo" class="control-label"></label>
-                <input asp-for="Correo" class="form-control" />
-                <span asp-validation-for="Correo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Primer_Nombre" class="control-label"></label>
-                <input asp-for="Primer_Nombre" class="form-control" />
-                <span asp-validation-for="Primer_Nombre" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Segundo_Nombre" class="control-label"></label>
-                <input asp-for="Segundo_Nombre" class="form-control" />
-                <span asp-validation-for="Segundo_Nombre" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Primer_Apellido" class="control-label"></label>
-                <input asp-for="Primer_Apellido" class="form-control" />
-                <span asp-validation-for="Primer_Apellido" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Segundo_Apellido" class="control-label"></label>
-                <input asp-for="Segundo_Apellido" class="form-control" />
-                <span asp-validation-for="Segundo_Apellido" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Telefono" class="control-label"></label>
-                <input asp-for="Telefono" class="form-control" />
-                <span asp-validation-for="Telefono" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Telefono_Fijo" class="control-label"></label>
-                <input asp-for="Telefono_Fijo" class="form-control" />
-                <span asp-validation-for="Telefono_Fijo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Cedula" class="control-label"></label>
-                <input asp-for="Cedula" class="form-control" />
-                <span asp-validation-for="Cedula" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="passsword" class="control-label"></label>
-                <input asp-for="passsword" class="form-control" />
-                <span asp-validation-for="passsword" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Id_Rol" class="control-label"></label>
-                <input asp-for="Id_Rol" class="form-control" />
-                <span asp-validation-for="Id_Rol" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+<link rel="stylesheet" href="~/css/style.css">
+<h1>Registro Clientes</h1>
+    <div class="col">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Correo" class="control-label"></label>
+                    <input asp-for="Correo" class="form-control" />
+                    <span asp-validation-for="Correo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Primer_Nombre" class="control-label"></label>
+                    <input asp-for="Primer_Nombre" class="form-control" />
+                    <span asp-validation-for="Primer_Nombre" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Segundo_Nombre" class="control-label"></label>
+                    <input asp-for="Segundo_Nombre" class="form-control" />
+                    <span asp-validation-for="Segundo_Nombre" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Primer_Apellido" class="control-label"></label>
+                    <input asp-for="Primer_Apellido" class="form-control" />
+                    <span asp-validation-for="Primer_Apellido" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Segundo_Apellido" class="control-label"></label>
+                    <input asp-for="Segundo_Apellido" class="form-control" />
+                    <span asp-validation-for="Segundo_Apellido" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Telefono" class="control-label"></label>
+                    <input asp-for="Telefono" class="form-control" />
+                    <span asp-validation-for="Telefono" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Telefono_Fijo" class="control-label"></label>
+                    <input asp-for="Telefono_Fijo" class="form-control" />
+                    <span asp-validation-for="Telefono_Fijo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Cedula" class="control-label"></label>
+                    <input asp-for="Cedula" class="form-control" />
+                    <span asp-validation-for="Cedula" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="passsword" class="control-label"></label>
+                    <input asp-for="passsword" class="form-control" />
+                    <span asp-validation-for="passsword" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Id_Rol" class="control-label"></label>
+                    <select asp-for="Id_Rol" class="form-control" asp-items="ViewBag.Roles"></select>
+                    <span asp-validation-for="Id_Rol" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
