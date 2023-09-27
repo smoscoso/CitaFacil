@@ -37,7 +37,7 @@ namespace CitaFacil.Models
                 context.Roles.AddRange(
                     new Roles
                     {
-                        Nombre_Rol = "Cliente"
+                        Nombre_Rol = "Administrador"
                     },
                     new Roles
                     {
@@ -45,7 +45,7 @@ namespace CitaFacil.Models
                     },
                     new Roles
                     {
-                        Nombre_Rol = "Administrador"
+                        Nombre_Rol = "Cliente"
                     }
                  );
                 context.SaveChanges();

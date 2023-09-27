@@ -1,17 +1,23 @@
 using CitaFacil.Data;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using CitaFacil.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.CodeAnalysis.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<CitaFacilContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerConnection")?? throw new InvalidOperationException("Connection string 'SqlServerConnection' not found.") ));
-/*builder.Services.AddAuthentication("CookieAuth")
-    .AddCookie("CookieAuth", config =>
-    {
-        config.Cookie.Name = "CitaFacil.Cookie";
-        config.LoginPath = "/Home/Login";
-    });*/
+builder.Services.AddScoped<IUsuarioService, UsuarioServices>();
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options=>
+{
+    options.LoginPath = "/Inicio/IniciarSesionCliente";
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+});
+
+
 builder.Services.AddAuthorization(config =>
 {
     config.AddPolicy("ClientePolicy", policy => 
@@ -38,6 +44,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

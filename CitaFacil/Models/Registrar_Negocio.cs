@@ -14,7 +14,7 @@ namespace CitaFacil.Models
         public int Telefono { get; set; }
         [Required, StringLength(80)]
         public int Telefono_Fijo { get; set; }
-       
+
         [Required, StringLength(80)]
         public string Direccion { get; set; }
         [Required, StringLength(240)]
@@ -25,6 +25,5 @@ namespace CitaFacil.Models
         [ForeignKey("Roles")]
         public int Id_Rol { get; set; }
         public virtual Roles? Rol { get; set; }
-
     }
 }

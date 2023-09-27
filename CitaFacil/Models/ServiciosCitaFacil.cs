@@ -21,7 +21,8 @@ namespace CitaFacil.Models
         {
             _context = context;
         }
-        public string CifrarContraseña(string contraseña)
+
+        public static string CifrarContraseña(string contraseña)
         {
             using(SHA256 sha256Hash=SHA256.Create())
             {

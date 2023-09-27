@@ -1,0 +1,41 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>IniciarSesionCliente</title>
+    <link rel="stylesheet" href="~/css/StyleLogin.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+<body>
+    <div class="form">
+        <form action="#" class="sub-form">
+            <div class="upper-form">
+                <h2>Inicio de Sesión Clientes</h2>
+                <label>Correo Electronico</label><br>
+                <input type="text" name="Correo" placeholder="Correo Electronico" required/><br>
+                <label>Contraseña</label><br>
+                <input type="password" name="Contraseña" placeholder="Contraseña" required/><br>
+                <div class="btn">
+                <button type="submit">Iniciar Sesión</button><br>
+                </div>
+                @if(ViewData["Mensaje"]!= null)
+                {
+                    <div class="alert alert-danger" role="alert">
+                        @ViewData["Mensaje"]
+                    </div>
+                }
+            </div>
+            <div class="bottom-form">
+                <a href"#">¿Quieres iniciar como Negocio?</a><br>
+                <a href="@Url.Action("Create", "Registrar_Cliente")" class="SesionCliente">¿No tienes una cuenta?</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

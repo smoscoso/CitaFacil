@@ -7,17 +7,58 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CitaFacil.Data;
 using CitaFacil.Models;
+using CitaFacil.Services;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace CitaFacil.Controllers
 {
     public class Registrar_ClienteController : Controller
     {
         private readonly CitaFacilContext _context;
+        private readonly ServiciosCitaFacil _servicios;
+        private readonly IUsuarioService _usuarioServico;
 
-        public Registrar_ClienteController(CitaFacilContext context)
+        public Registrar_ClienteController(IUsuarioService usuarioServico)
         {
-            _context = context;
+            _usuarioServico = usuarioServico;
         }
+        public IActionResult IniciarSesionCliente()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> IniciarSesionCliente(string correo, string clave)
+        {
+            Registrar_Cliente clienteEncontrado = await _usuarioServico.GetRegistrar_Cliente(correo, ServiciosCitaFacil.CifrarContraseña(clave));
+            if (clienteEncontrado != null)
+            {
+                ViewData["Message"] = "No se encontro en el sistema";
+            }
+            List<Claim> claims = new List<Claim>() {
+                new Claim(ClaimTypes.Name, clienteEncontrado.Primer_Nombre, clienteEncontrado.Primer_Apellido),
+            };
+            ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            AuthenticationProperties properties = new AuthenticationProperties()
+            {
+                AllowRefresh = true,
+            };
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity), properties);
+            return RedirectToAction("Index", "Home");
+        }
+
+
+
+
+
+
+
+
+
+
+
+
 
         // GET: Registrar_Cliente
         public async Task<IActionResult> Index()
@@ -62,7 +103,7 @@ namespace CitaFacil.Controllers
             {
                 _context.Add(registrar_Cliente);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("IniciarSesionCliente", "Inicio");
             }
             return View(registrar_Cliente);
         }

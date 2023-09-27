@@ -26,5 +26,6 @@ namespace CitaFacil.Models
         public string passsword { get; set; }
         [ForeignKey("Roles")]
         public int Id_Rol { get; set; }
+        public virtual Roles? Rol { get; set; }
     }
 }

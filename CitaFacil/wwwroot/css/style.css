@@ -66,8 +66,9 @@ img{
 }
 
 .menu label{
+    position:center;
     cursor: pointer;
-    display: none;
+    display: flex;
 }
 
 .header-content{
@@ -191,6 +192,7 @@ h2{
 .about-content {
     display: flex;
     align-items: center;
+    padding: 0 80px;
 }
 
 .about-txt{
@@ -199,7 +201,7 @@ h2{
 }
 
 .about-img {
-    flex-basis: 50%;
+    flex-basis: 40%;
 }
 
 .contact {
@@ -215,12 +217,11 @@ form {
 }
 
 input {
-    
     width: 300px;
     padding: 17px;
     border: 0;
     outline: none;
-    border-radius: 20px;
+    border-radius: 50px;
     box-shadow: 0 0 10px rgba(33, 40, 105, 0.2);
     margin-right: 20px;
 }
@@ -231,7 +232,6 @@ input {
 }
 
 .footer-content {
-    
     justify-content: space-between;
     color: #ffffff;
     margin-bottom: 10px;
@@ -354,9 +354,4 @@ input {
         flex-direction: column;
         text-align: center;
     }
-}
-.Crear {
-    padding: 80px 0;
-    background-color: #ffffff;
-    border-radius: 25px;
 }

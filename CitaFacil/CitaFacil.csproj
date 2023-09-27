@@ -7,6 +7,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Services\Contrato\**" />
+    <Compile Remove="Services\Implementacion\**" />
+    <Compile Remove="wwwroot\img2\**" />
+    <Content Remove="Services\Contrato\**" />
+    <Content Remove="Services\Implementacion\**" />
+    <Content Remove="wwwroot\img2\**" />
+    <EmbeddedResource Remove="Services\Contrato\**" />
+    <EmbeddedResource Remove="Services\Implementacion\**" />
+    <EmbeddedResource Remove="wwwroot\img2\**" />
+    <None Remove="Services\Contrato\**" />
+    <None Remove="Services\Implementacion\**" />
+    <None Remove="wwwroot\img2\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\css\site - Copia.css" />
     <Content Remove="wwwroot\img\Imagen1.png" />
   </ItemGroup>
 
