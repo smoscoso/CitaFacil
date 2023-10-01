@@ -96,16 +96,16 @@ namespace CitaFacil.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Correo,Primer_Nombre,Segundo_Nombre,Primer_Apellido,Segundo_Apellido,Telefono,Telefono_Fijo,Cedula,passsword,Id_Rol")] Registrar_Cliente registrar_Cliente)
         {
-            if (ModelState.IsValid)
+            registrar_Cliente.passsword = ServiciosCitaFacil.CifrarContraseña(registrar_Cliente.passsword);
+            Registrar_Cliente clienteCreado = await _usuarioServico.SaveRegistrar_Cliente(registrar_Cliente);
+            if (clienteCreado.Correo != null)
             {
-                _context.Add(registrar_Cliente);
-                await _context.SaveChangesAsync();
                 return RedirectToAction("IniciarSesionCliente", "Inicio");
             }
-            return View(registrar_Cliente);
+            ViewData["Message"] = "No se pudo Crear el cliente";
+            return View();
         }
 
         // GET: Registrar_Cliente/Edit/5

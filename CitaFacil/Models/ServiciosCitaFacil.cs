@@ -96,7 +96,7 @@ namespace CitaFacil.Models
         {
             Registrar_Negocio negocio = _context.Registrar_Negocio.Include(r => r.Id_Rol).FirstOrDefault(r => r.Correo == correo);
             string fechaActual = DateTime.Now.ToString("dd/MM/yyyy");
-            string cuerpo = "Hola " + negocio.Nombre + "! \n\n" +
+            string cuerpo = "Hola " + negocio.Nombre_Negocio + "! \n\n" +
                 "Te damos la bienvenida a CitaFacil, la plataforma que te permite gestionar tus citas de una manera fácil y rápida. \n\n" +
                 "Tu registro se ha realizado con éxito. \n\n" +
                 "Fecha de registro: " + fechaActual + "\n\n" +

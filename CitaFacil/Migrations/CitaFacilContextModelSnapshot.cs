@@ -112,7 +112,7 @@ namespace CitaFacil.Migrations
                     b.Property<int>("Id_Rol")
                         .HasColumnType("int");
 
-                    b.Property<string>("Nombre")
+                    b.Property<string>("Nombre_Plataforma")
                         .IsRequired()
                         .HasMaxLength(80)
                         .HasColumnType("nvarchar(80)");
