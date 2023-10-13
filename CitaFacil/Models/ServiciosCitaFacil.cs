@@ -22,7 +22,7 @@ namespace CitaFacil.Models
             _context = context;
         }
 
-        public static string CifrarContraseña(string contraseña)
+        public  string CifrarContraseña(string contraseña)
         {
             using(SHA256 sha256Hash=SHA256.Create())
             {
@@ -40,13 +40,13 @@ namespace CitaFacil.Models
             }
         }
 
-        public Registrar_Cliente comprobarContraseñaCliente(string correo, string contraseña)
+        public Usuario comprobarContraseña(string correo, string contraseña)
         {
-            Registrar_Cliente cliente = _context.Registrar_Cliente.Include(c => c.Id_Rol).FirstOrDefault(c => c.Correo == correo);
+            Usuario cliente = _context.Usuario.Include(c => c.Id_Rol).FirstOrDefault(c => c.Correo == correo);
             if (cliente != null && contraseña!=null)
             {
                 contraseña=CifrarContraseña(contraseña);
-                if (cliente.passsword == CifrarContraseña(contraseña))
+                if (cliente.contraseña == CifrarContraseña(contraseña))
                 {
                     return cliente;
                 }
@@ -58,13 +58,13 @@ namespace CitaFacil.Models
             return null;
             }
         }
-        public Registrar_Negocio ComprobarContraseñaNegocio(string correo, string contraseña)
+        public Empresas ComprobarContraseñaNegocio(string correo, string contraseña)
         {
-            Registrar_Negocio negocio = _context.Registrar_Negocio.Include(c => c.Id_Rol).FirstOrDefault(c => c.Correo == correo);
+            Empresas negocio = _context.Empresa.Include(c => c.Id_Rol).FirstOrDefault(c => c.Correo == correo);
             if (negocio != null && contraseña != null)
             {
                 contraseña = CifrarContraseña(contraseña);
-                if (negocio.passsword == CifrarContraseña(contraseña))
+                if (negocio.contraseña == CifrarContraseña(contraseña))
                 {
                     return negocio;
                 }
@@ -77,11 +77,11 @@ namespace CitaFacil.Models
                 return null;
             }
         }
-        public void EnviarCorreoCliente(string correo)
+        public void EnviarCorreoUsuario(string correo)
         {
-            Registrar_Cliente cliente = _context.Registrar_Cliente.Include(r => r.Id_Rol).FirstOrDefault(r => r.Correo == correo);
+            Usuario cliente = _context.Usuario.Include(r => r.Id_Rol).FirstOrDefault(r => r.Correo == correo);
             string fechaActual=DateTime.Now.ToString("dd/MM/yyyy");
-            string cuerpo="Hola "+cliente.Primer_Nombre+cliente.Primer_Apellido+"! \n\n"+
+            string cuerpo="Hola "+cliente.Nombre_Usuario+"! \n\n"+
                 "Te damos la bienvenida a CitaFacil, la plataforma que te permite gestionar tus citas de una manera fácil y rápida. \n\n"+
                 "Tu registro se ha realizado con éxito. \n\n"+
                 "Fecha de registro: "+fechaActual+"\n\n"+
@@ -92,11 +92,11 @@ namespace CitaFacil.Models
             solicitud.Contenido=cuerpo;
             _emailService.SendEmail(solicitud);
         }
-        public void EnviarCorreoNegocio(string correo)
+        public void EnviarCorreoEmpresa(string correo)
         {
-            Registrar_Negocio negocio = _context.Registrar_Negocio.Include(r => r.Id_Rol).FirstOrDefault(r => r.Correo == correo);
+            Empresas negocio = _context.Empresa.Include(r => r.Id_Rol).FirstOrDefault(r => r.Correo == correo);
             string fechaActual = DateTime.Now.ToString("dd/MM/yyyy");
-            string cuerpo = "Hola " + negocio.Nombre_Negocio + "! \n\n" +
+            string cuerpo = "Hola " + negocio.Nombre_Empresa + "! \n\n" +
                 "Te damos la bienvenida a CitaFacil, la plataforma que te permite gestionar tus citas de una manera fácil y rápida. \n\n" +
                 "Tu registro se ha realizado con éxito. \n\n" +
                 "Fecha de registro: " + fechaActual + "\n\n" +

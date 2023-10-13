@@ -18,11 +18,12 @@ namespace CitaFacil.Controllers
         {
             return View();
         }
+        /*
         [HttpPost]
-        public async Task <IActionResult> RegistrarseCliente(Registrar_Cliente modeloC)
+        public async Task <IActionResult> RegistrarseCliente(Usuario modeloC)
         {
-            modeloC.passsword= ServiciosCitaFacil.CifrarContraseña(modeloC.passsword);
-            Registrar_Cliente clienteCreado = await _usuarioServico.SaveRegistrar_Cliente(modeloC);
+            modeloC.contraseña= ServiciosCitaFacil.CifrarContraseña(modeloC.contraseña);
+            Usuario clienteCreado = await _usuarioServico.SaveRegistrar_Cliente(modeloC);
             if (clienteCreado.Correo != null)
             {
                 return RedirectToAction ("IniciarSesionCliente", "Inicio");
@@ -36,13 +37,13 @@ namespace CitaFacil.Controllers
         }
         [HttpPost]
         public async Task <IActionResult> IniciarSesionCliente(string correo, string clave)
-        {   Registrar_Cliente clienteEncontrado = await _usuarioServico.GetRegistrar_Cliente(correo, ServiciosCitaFacil.CifrarContraseña(clave));
+        {   Usuario clienteEncontrado = await _usuarioServico.GetRegistrar_Cliente(correo, ServiciosCitaFacil.CifrarContraseña(clave));
             if(clienteEncontrado != null)
             {
                 ViewData["Message"] = "No se encontro en el sistema";
             }
             List<Claim> claims = new List<Claim>() { 
-                new Claim(ClaimTypes.Name, clienteEncontrado.Primer_Nombre, clienteEncontrado.Primer_Apellido),
+                new Claim(ClaimTypes.Name, clienteEncontrado.Nombre_Usuario),
             };
             ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             AuthenticationProperties properties = new AuthenticationProperties()
@@ -51,7 +52,7 @@ namespace CitaFacil.Controllers
             };
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity), properties);
             return RedirectToAction("Index","Home");
-        }
+        }*/
 
     }
 }

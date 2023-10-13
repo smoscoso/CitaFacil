@@ -1,38 +1,39 @@
-﻿@model CitaFacil.Models.Registrar_Cliente
+﻿@model CitaFacil.Models.Usuario
 
 @{
-    ViewData["Title"] = "Details";
+    Layout = null;
 }
 
-<h1>Details</h1>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
 
 <div>
-    <h4>Registrar_Cliente</h4>
+    <h4>Usuario</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Primer_Nombre)
+            @Html.DisplayNameFor(model => model.Nombre_Usuario)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Primer_Nombre)
+            @Html.DisplayFor(model => model.Nombre_Usuario)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Segundo_Nombre)
+            @Html.DisplayNameFor(model => model.Cedula)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Segundo_Nombre)
+            @Html.DisplayFor(model => model.Cedula)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Primer_Apellido)
+            @Html.DisplayNameFor(model => model.Correo)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Primer_Apellido)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Segundo_Apellido)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Segundo_Apellido)
+            @Html.DisplayFor(model => model.Correo)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Telefono)
@@ -47,16 +48,10 @@
             @Html.DisplayFor(model => model.Telefono_Fijo)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Cedula)
+            @Html.DisplayNameFor(model => model.contraseña)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Cedula)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.passsword)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.passsword)
+            @Html.DisplayFor(model => model.contraseña)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Id_Rol)
@@ -67,6 +62,8 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Correo">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model?.Id_Usuario">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+</body>
+</html>

@@ -5,6 +5,7 @@ using CitaFacil.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.CodeAnalysis.Options;
+using CitaFacil.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,12 +19,13 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 });
 
 
+
 builder.Services.AddAuthorization(config =>
 {
-    config.AddPolicy("ClientePolicy", policy => 
-    policy.RequireClaim("Cliente"));
-    config.AddPolicy("NegocioPolicy", policy =>
-    policy.RequireClaim("Negocio"));
+    config.AddPolicy("UsuarioPolicy", policy => 
+    policy.RequireClaim("Usuario"));
+    config.AddPolicy("EmpresaPolicy", policy =>
+    policy.RequireClaim("Empresa"));
     config.AddPolicy("AdminPolicy", policy =>
     policy.RequireClaim("Administrador"));
 });
@@ -31,6 +33,12 @@ builder.Services.AddAuthorization(config =>
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    SeedData.Initialize(services);
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
