@@ -16,7 +16,7 @@ namespace CitaFacil.Services
         public void SendEmail(EMail solicitud)
         {
             var email = new MimeMessage();
-            email.From.Add(MailboxAddress.Parse(_configuration.GetSection("Email:UserName").Value));
+            email.From.Add(MailboxAddress.Parse(_configuration.GetSection("Email:Username").Value));
             email.To.Add(MailboxAddress.Parse(solicitud.Para));
             email.Subject = solicitud.Asunto;
             email.Body = new TextPart(TextFormat.Html)
@@ -29,8 +29,8 @@ namespace CitaFacil.Services
                 Convert.ToInt32(_configuration.GetSection("Email:Port").Value),
                 SecureSocketOptions.StartTls);
 
-            smtp.Authenticate(_configuration.GetSection("Email:UserName").Value
-                , _configuration.GetSection("Email:PassWord").Value);
+            smtp.Authenticate(_configuration.GetSection("Email:Username").Value
+                , _configuration.GetSection("Email:Password").Value);
             smtp.Send(email);
             smtp.Disconnect(true);
         }

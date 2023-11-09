@@ -9,10 +9,10 @@ namespace CitaFacil.Models
         [Required]
         public double Monto { get; set; }
         [Required]
-        public string Metodo_Pago { get; set; }
+        public string Metodo { get; set; }
         [Required]
-        public string Estado_Pago { get; set; }
+        public string Estado { get; set; }
         [Required]
-        public string Detalle_Pago { get; set; }
+        public string Detalle { get; set; }
     }
 }

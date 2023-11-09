@@ -2,11 +2,11 @@
 
 namespace CitaFacil.Models
 {
-    public class Estado
+    public class Estados
     {
         [Key]
         public int Id_Estado { get; set; }
         [Required, StringLength(20)]
-        public string estado { get; set; }
+        public string Estado { get; set; }
     }
 }

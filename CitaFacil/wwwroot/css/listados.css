@@ -1,0 +1,42 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;500;600;700;800&display=swap');
+
+body {
+    background-color: #EBE3E3;
+}
+
+.accordion-button {
+    font-size: 1em;
+    font-family: 'Bebas Neue', sans-serif;
+    color: #000080;
+}
+
+.text-title {
+    font-family: 'Bebas Neue', sans-serif;
+    color: #000080;
+    letter-spacing: 2px;
+    font-size:3em;
+}
+
+.accordion-body{
+    overflow-x:auto;
+}
+
+.accordion-body::-webkit-scrollbar{
+    width:0px;
+}
+
+.table {
+    width: 100%;
+    text-align: center;
+    white-space:nowrap;
+}
+
+.table thead {
+    color: #000080 !important;
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+    .table thead tr th {
+        color: #000080 !important;
+        letter-spacing: 3px;
+    }

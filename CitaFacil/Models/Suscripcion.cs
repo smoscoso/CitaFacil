@@ -5,7 +5,7 @@ namespace CitaFacil.Models
     public class Suscripcion
     {
         [Key]
-        public int Id_Suscripcion { get; set; }
+        public int Id { get; set; }
         [Required]
         public DateTime Fecha_Pago { get; set; }
         [Required]

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CitaFacil.Migrations
 {
     [DbContext(typeof(CitaFacilContext))]
-    [Migration("20231008005508_primera-migracion")]
-    partial class primeramigracion
+    [Migration("20231107212045_arreglandoEmpresaTabla")]
+    partial class arreglandoEmpresaTabla
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,31 +25,31 @@ namespace CitaFacil.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("CitaFacil.Models.Cita", b =>
+            modelBuilder.Entity("CitaFacil.Models.Citas", b =>
                 {
-                    b.Property<int>("Id_Cita")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_Cita"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Detalle")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("Duracion_Cita")
+                    b.Property<DateTime>("Duracion")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("Estado")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("Fecha_Cita")
+                    b.Property<DateTime>("Fecha")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("Hora_Cita")
+                    b.Property<DateTime>("Hora")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Motivo_Cita")
+                    b.Property<string>("Motivo")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -57,12 +57,12 @@ namespace CitaFacil.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id_Cita");
+                    b.HasKey("Id");
 
                     b.ToTable("Cita");
                 });
 
-            modelBuilder.Entity("CitaFacil.Models.Empresa", b =>
+            modelBuilder.Entity("CitaFacil.Models.Empresas", b =>
                 {
                     b.Property<int>("Id_Empresa")
                         .ValueGeneratedOnAdd()
@@ -70,25 +70,39 @@ namespace CitaFacil.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_Empresa"));
 
+                    b.Property<string>("Celular")
+                        .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("nvarchar(80)");
+
                     b.Property<string>("Correo")
                         .IsRequired()
                         .HasMaxLength(80)
                         .HasColumnType("nvarchar(80)");
 
-                    b.Property<string>("Estado")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Id_EstadoEmpresa")
+                        .HasColumnType("int");
 
                     b.Property<int>("Id_Rol")
                         .HasColumnType("int");
 
-                    b.Property<string>("Nombre_Empresa")
+                    b.Property<string>("Nombre")
                         .IsRequired()
                         .HasMaxLength(80)
                         .HasColumnType("nvarchar(80)");
 
-                    b.Property<int?>("RolId_Rol")
+                    b.Property<int?>("RolId_roles")
                         .HasColumnType("int");
+
+                    b.Property<string>("Telefono")
+                        .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("nvarchar(80)");
+
+                    b.Property<string>("Tipo")
+                        .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("nvarchar(80)");
 
                     b.Property<string>("contraseña")
                         .IsRequired()
@@ -101,11 +115,6 @@ namespace CitaFacil.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(1)");
 
-                    b.Property<string>("tipo_Empresa")
-                        .IsRequired()
-                        .HasMaxLength(80)
-                        .HasColumnType("nvarchar(80)");
-
                     b.Property<string>("ubicacion")
                         .IsRequired()
                         .HasMaxLength(80)
@@ -113,12 +122,14 @@ namespace CitaFacil.Migrations
 
                     b.HasKey("Id_Empresa");
 
-                    b.HasIndex("RolId_Rol");
+                    b.HasIndex("Id_EstadoEmpresa");
+
+                    b.HasIndex("RolId_roles");
 
                     b.ToTable("Empresa");
                 });
 
-            modelBuilder.Entity("CitaFacil.Models.Estado", b =>
+            modelBuilder.Entity("CitaFacil.Models.Estados", b =>
                 {
                     b.Property<int>("Id_Estado")
                         .ValueGeneratedOnAdd()
@@ -126,7 +137,7 @@ namespace CitaFacil.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_Estado"));
 
-                    b.Property<string>("estado")
+                    b.Property<string>("Estado")
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
@@ -144,15 +155,15 @@ namespace CitaFacil.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_Pago"));
 
-                    b.Property<string>("Detalle_Pago")
+                    b.Property<string>("Detalle")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Estado_Pago")
+                    b.Property<string>("Estado")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Metodo_Pago")
+                    b.Property<string>("Metodo")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -164,31 +175,31 @@ namespace CitaFacil.Migrations
                     b.ToTable("Pago");
                 });
 
-            modelBuilder.Entity("CitaFacil.Models.Rol", b =>
+            modelBuilder.Entity("CitaFacil.Models.Roles", b =>
                 {
-                    b.Property<int>("Id_Rol")
+                    b.Property<int>("Id_roles")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_Rol"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_roles"));
 
                     b.Property<string>("Nombre_Rol")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.HasKey("Id_Rol");
+                    b.HasKey("Id_roles");
 
                     b.ToTable("Rol");
                 });
 
             modelBuilder.Entity("CitaFacil.Models.Suscripcion", b =>
                 {
-                    b.Property<int>("Id_Suscripcion")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_Suscripcion"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("Fecha_Pago")
                         .HasColumnType("datetime2");
@@ -200,7 +211,7 @@ namespace CitaFacil.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id_Suscripcion");
+                    b.HasKey("Id");
 
                     b.ToTable("Suscripcion");
                 });
@@ -209,7 +220,6 @@ namespace CitaFacil.Migrations
                 {
                     b.Property<int>("Id_Usuario")
                         .ValueGeneratedOnAdd()
-                        .HasMaxLength(80)
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id_Usuario"));
@@ -219,27 +229,27 @@ namespace CitaFacil.Migrations
                         .HasMaxLength(80)
                         .HasColumnType("nvarchar(80)");
 
+                    b.Property<string>("Celular")
+                        .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("nvarchar(80)");
+
                     b.Property<string>("Correo")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Id_EstadoUsuario")
+                        .HasColumnType("int");
+
                     b.Property<int>("Id_Rol")
                         .HasColumnType("int");
 
-                    b.Property<string>("Nombre_Usuario")
+                    b.Property<string>("Nombre")
                         .IsRequired()
-                        .HasMaxLength(80)
-                        .HasColumnType("nvarchar(80)");
-
-                    b.Property<int?>("RolId_Rol")
-                        .HasColumnType("int");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Telefono")
-                        .IsRequired()
-                        .HasMaxLength(80)
-                        .HasColumnType("nvarchar(80)");
-
-                    b.Property<string>("Telefono_Fijo")
                         .IsRequired()
                         .HasMaxLength(80)
                         .HasColumnType("nvarchar(80)");
@@ -250,27 +260,47 @@ namespace CitaFacil.Migrations
 
                     b.HasKey("Id_Usuario");
 
-                    b.HasIndex("RolId_Rol");
+                    b.HasIndex("Id_EstadoUsuario");
+
+                    b.HasIndex("Id_Rol");
 
                     b.ToTable("Usuario");
                 });
 
-            modelBuilder.Entity("CitaFacil.Models.Empresa", b =>
+            modelBuilder.Entity("CitaFacil.Models.Empresas", b =>
                 {
-                    b.HasOne("CitaFacil.Models.Rol", "Rol")
+                    b.HasOne("CitaFacil.Models.Estados", "Estados")
                         .WithMany()
-                        .HasForeignKey("RolId_Rol");
+                        .HasForeignKey("Id_EstadoEmpresa")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CitaFacil.Models.Roles", "Rol")
+                        .WithMany()
+                        .HasForeignKey("RolId_roles");
+
+                    b.Navigation("Estados");
 
                     b.Navigation("Rol");
                 });
 
             modelBuilder.Entity("CitaFacil.Models.Usuario", b =>
                 {
-                    b.HasOne("CitaFacil.Models.Rol", "Rol")
+                    b.HasOne("CitaFacil.Models.Estados", "Estados")
                         .WithMany()
-                        .HasForeignKey("RolId_Rol");
+                        .HasForeignKey("Id_EstadoUsuario")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("Rol");
+                    b.HasOne("CitaFacil.Models.Roles", "Roles")
+                        .WithMany()
+                        .HasForeignKey("Id_Rol")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Estados");
+
+                    b.Navigation("Roles");
                 });
 #pragma warning restore 612, 618
         }

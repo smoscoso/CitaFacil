@@ -1,0 +1,133 @@
+﻿@{
+    ViewData["Title"] = "Listados";
+}
+@section ExtraStyles {
+    <link rel="stylesheet" href="~/css/listados.css" asp-append-version="true" />
+}
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <h1 class="text-title col-12 text-center mt-5 mb-4"> Listados</h1>
+        <div class="accordion col-12" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Listado Usuario
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Cedula</th>
+                                    <th scope="col">Correo</th>
+                                    <th scope="col">Celular</th>
+                                    <th scope="col">Telefono</th>
+                                    <th scope="col">Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (ViewBag.listaUsuarios.Count == 0)
+                                {
+                                    <tr>
+                                        <th scope="row" colspan="6">No Usuarios</th>
+                                    </tr>
+                                }
+                                @foreach (Usuario usuario in ViewBag.listaUsuarios)
+                                {
+                                    <tr>
+                                        <th scope="row" >@usuario.Id_Usuario</th>
+                                        <th>@usuario.Nombre</th>
+                                        <th>@usuario.Cedula</th>
+                                        <th>@usuario.Correo</th>
+                                        <th>@usuario.Celular</th>
+                                        <th>@usuario.Telefono</th>
+                                        @if(usuario.Id_EstadoUsuario == 4)
+                                        {
+                                            <th>
+                                                <a asp-route-id="@usuario.Id_Usuario" asp-action="AceptarUsuario" asp-controller="Administrador" class="btn btn-success">Aceptar</a>
+                                                <a asp-route-id="@usuario.Id_Usuario" asp-action="RechazarUsuario" asp-controller="Administrador" class="btn btn-danger">Rechazar</a>
+                                            </th>
+                                        }
+                                        else
+                                        {
+                                            <th class="text-warning fw-bold">@usuario.Estados.Estado</th>
+                                        }
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Listado Empresa
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">NIT</th>
+                                    <th scope="col">Dirección</th>
+                                    <th scope="col">Servicio</th>
+                                    <th scope="col">plan</th>
+                                    <th scope="col">Correo</th>
+                                    <th scope="col">Celular</th>
+                                    <th scope="col">Telefono</th>
+                                    <th scope="col">Estado</th>
+                                    <th scope="col">Fecha Registro</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (ViewBag.listaEmpresas.Count == 0)
+                                {
+                                    <tr>
+                                        <th scope="row" colspan="6">No Empresas</th>
+                                    </tr>
+                                }
+                                @foreach (Empresas empresa in ViewBag.listaEmpresas)
+                                {
+                                    <tr>
+                                        <th scope="row">@empresa.Id_Empresa</th>
+                                        <th>@empresa.Nombre</th>
+                                        <th>@empresa.NIT</th>
+                                        <th>@empresa.ubicacion</th>
+                                        <th>@empresa.Tipo</th>
+                                        <th>@empresa.plan</th>
+                                        <th>@empresa.Correo</th>
+                                        <th>@empresa.Celular</th>
+                                        <th>@empresa.Telefono</th>
+                                        @if (empresa.Id_EstadoEmpresa == 4)
+                                        {
+                                            <th>
+                                                <a asp-route-id="@empresa.Id_Empresa" asp-action="AceptarEmpresa" asp-controller="Administrador" class="btn btn-success">Aceptar</a>
+                                                <a asp-route-id="@empresa.Id_Empresa" asp-action="RechazarEmpresa" asp-controller="Administrador" class="btn btn-danger">Rechazar</a>
+                                            </th>
+                                        }
+                                        else
+                                        {
+                                            <th class="text-warning fw-bold">@empresa.Estados.Estado</th>
+                                        }
+                                        @{
+                                            string fechaFormateada = empresa.fecha_Registro.ToString("dd/MMMM/yyyy", new System.Globalization.CultureInfo("es-ES"));
+                                        }
+                                        <th>@fechaFormateada</th>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

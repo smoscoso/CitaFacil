@@ -4,6 +4,7 @@ using CitaFacil.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CitaFacil.Migrations
 {
     [DbContext(typeof(CitaFacilContext))]
-    partial class CitaFacilContextModelSnapshot : ModelSnapshot
+    [Migration("20231107215457_agregandoNITaEmpresa")]
+    partial class agregandoNITaEmpresa
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -91,6 +94,9 @@ namespace CitaFacil.Migrations
                         .HasMaxLength(80)
                         .HasColumnType("nvarchar(80)");
 
+                    b.Property<int?>("RolId_roles")
+                        .HasColumnType("int");
+
                     b.Property<string>("Telefono")
                         .IsRequired()
                         .HasMaxLength(80)
@@ -121,7 +127,7 @@ namespace CitaFacil.Migrations
 
                     b.HasIndex("Id_EstadoEmpresa");
 
-                    b.HasIndex("Id_Rol");
+                    b.HasIndex("RolId_roles");
 
                     b.ToTable("Empresa");
                 });
@@ -272,15 +278,13 @@ namespace CitaFacil.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CitaFacil.Models.Roles", "Roles")
+                    b.HasOne("CitaFacil.Models.Roles", "Rol")
                         .WithMany()
-                        .HasForeignKey("Id_Rol")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("RolId_roles");
 
                     b.Navigation("Estados");
 
-                    b.Navigation("Roles");
+                    b.Navigation("Rol");
                 });
 
             modelBuilder.Entity("CitaFacil.Models.Usuario", b =>
