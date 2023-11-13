@@ -1,0 +1,67 @@
+﻿@model List<Empresas>
+<link rel="stylesheet" href="~/css/DashPerfil.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/Principal.css" asp-append-version="true" />
+<!DOCTYPE html>
+<!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title> Day Night Toggle | CodingLab </title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<head>
+    <nav class="navbar navbar-expand-custom navbar-mainbg">
+        <a class="navbar-brand navbar-logo" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars text-white"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
+                <li class="nav-item">
+                    <a class="nav-link mx-2 active" asp-controller="Negocio" asp-action="Index"><i class="far fa-copy"></i>Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-2 active" asp-controller="Negocio" asp-action="CalendarioN"><i class="far fa-copy"></i>Calendario</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-2 active" asp-controller="Negocio" asp-action="Dash"><i class="far fa-copy"></i>Dash board</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</head>
+
+<body>
+    <div class="container">
+        <input type="checkbox" id="switch">
+        <div class="outer">
+            <div class="content">
+                <label for="switch">
+                    <span class="toggle">
+                        <span class="circle"></span>
+                    </span>
+                </label>
+                <div class="image-box">
+                    <img src="https://i.pinimg.com/originals/fa/37/a9/fa37a99e5f740712b1941c847f1b45f7.jpg" alt="">
+                </div>
+              
+                <div class="details">
+                    @foreach (var empresa in Model)
+                    {
+                        <div class="profile-card">
+                            <h3>@empresa.Nombre</h3>
+                            <p>Tipo: @empresa.Tipo</p>
+                            <p>Ubicación: @empresa.ubicacion</p>
+                            <p>Teléfono: @empresa.Telefono</p>
+                        </div>
+                    }
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>

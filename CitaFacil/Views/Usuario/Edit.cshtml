@@ -21,9 +21,9 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id_Usuario" />
             <div class="form-group">
-                <label asp-for="Nombre_Usuario" class="control-label"></label>
-                <input asp-for="Nombre_Usuario" class="form-control" />
-                <span asp-validation-for="Nombre_Usuario" class="text-danger"></span>
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Cedula" class="control-label"></label>
@@ -36,14 +36,14 @@
                 <span asp-validation-for="Correo" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Celular" class="control-label"></label>
+                <input asp-for="Celular" class="form-control" />
+                <span asp-validation-for="Celular" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Telefono" class="control-label"></label>
                 <input asp-for="Telefono" class="form-control" />
                 <span asp-validation-for="Telefono" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Telefono_Fijo" class="control-label"></label>
-                <input asp-for="Telefono_Fijo" class="form-control" />
-                <span asp-validation-for="Telefono_Fijo" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="contraseña" class="control-label"></label>
@@ -52,7 +52,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Id_Rol" class="control-label"></label>
-                <input asp-for="Id_Rol" class="form-control" />
+                <select asp-for="Id_Rol" class="form-control" asp-items="ViewBag.Id_Rol"></select>
                 <span asp-validation-for="Id_Rol" class="text-danger"></span>
             </div>
             <div class="form-group">

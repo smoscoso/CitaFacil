@@ -1,0 +1,121 @@
+﻿@{
+    ViewData["Title"] = "Principal";
+}
+<script src="~/js/Negocio.js" defer></script>
+<link rel="stylesheet" href="~/css/Principal.css" asp-append-version="true" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido a CITA FACIL</title>
+  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <head>
+        <nav class="navbar navbar-expand-custom navbar-mainbg">
+            <a class="navbar-brand navbar-logo" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars text-white"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
+                    <li class="nav-item">
+                        <a class="nav-link mx-2 active" asp-controller="Negocio" asp-action="Index"><i class="far fa-copy"></i>Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-2 active" asp-controller="Negocio" asp-action="CalendarioN"><i class="far fa-copy"></i>Calendario</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-2 active" asp-controller="Negocio" asp-action="Dash"><i class="far fa-copy"></i>Dash board</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </head>
+
+
+    <section id="bienvenido">
+        <div class="contenido">
+            <a href="#contacto" class="boton-llamado">Contáctenos</a>
+        </div>
+    </section>
+
+    <!-- Carrusel Bootstrap -->
+    <section id="carrusel">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicadores -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+                <li data-target="#myCarousel" data-slide-to="3"></li>
+            </ol>
+
+            <!-- Imágenes del carrusel -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img src="https://previews.123rf.com/images/farhad73/farhad731811/farhad73181100103/112829489-cartel-de-barber%C3%ADa-pancarta-etiqueta-insignia-o-emblema-sobre-fondo-gris-con-poste-de-barbero-en.jpg" alt="Ilustracion">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>Ofrece tus servicios</h3>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="https://cdn2.hubspot.net/hubfs/2356021/AdobeStock_107624905.jpeg" alt="fotografia" width="300" height="424">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>Llega a mas clientes</h3>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="https://i.pinimg.com/736x/14/ab/40/14ab4096e5a7b465d54591f5000da64a.jpg" alt="pintura" width="300" height="424">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>Deja que conozcan tu negocio</h3>
+
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="https://revistaexclama.com/wp-content/uploads/2015/01/Carlos-4.jpg" alt="diseno" width="300" height="424">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>Define tus horarios </h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controles izquierda/derecha -->
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Anterior</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Siguiente</span>
+            </a>
+        </div>
+    </section>
+    <a class="btn btn-danger" asp-action="Cerrar_Sesion" asp-controller="Home"> cerrar sesion </a>
+
+    <section id="contacto">
+        <div class="contenido">
+            <h2>Contacto</h2>
+            <p>¡Contáctenos para discutir cómo podemos ayudar a su negocio a crecer y prosperar!</p>
+            <a href="tel:+123456789">Llámenos: +12 3456 789</a>
+            <a href="mailto:info@tunegocio.com">Correo Electrónico: info@tunegocio.com</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="contenido">
+            <p>&copy; 2023 CITAFACIL. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
+
+
+
+
+

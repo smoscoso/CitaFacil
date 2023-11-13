@@ -1,0 +1,65 @@
+﻿@model EmpresaDTO
+@{
+    ViewData["Title"] = "Registro Cliente";
+}
+@section ExtraStyles {
+    <link rel="stylesheet" href="~/css/RegistroUsuario.css" asp-append-version="true" />
+}
+
+<div class="container">
+    @if (ViewBag.error != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade text-center show fw-bold mt-3 h4" role="alert">
+            @ViewBag.error
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    <form asp-action="RegistrarEmpresa" asp-controller="Empresa" method="post" class="row justify-content-evenly">
+        <h1 class="text-title col-12 text-center mt-5"> Registro Empresa</h1>
+        <div class="col-12 col-md-8 col-lg-6 px-3">
+            <label for="nombre" class="ms-1 mb-0 form-label text-title">Nombre</label>
+            <input asp-for="Nombre" type="text" min="3" class="mb-4 form-control" id="nombre" placeholder="nombre">
+        </div>
+
+        <div class="col-12 col-md-8 col-lg-6 px-3">
+            <label for="direccion" class="ms-1 mb-0 form-label text-title">Dirección</label>
+            <input asp-for="direccion" type="text" min="3" class="mb-4 form-control" id="direccion" placeholder="dirección">
+        </div>
+        <div class="col-12 col-md-8 col-lg-6 px-3">
+            <label for="servicios" class="ms-1 mb-0 form-label text-title">Tipo de Servicio</label>
+            <select asp-for="servicio" type="text" min="3" class="mb-4 form-control" id="servicios">
+                <option selected>Seleccionar</option>
+                <option value="Barbería">Barbería</option>
+                <option value="Salon de Belleza">Salon de Belleza</option>
+            </select>    
+        </div>
+        <div class="col-12 col-md-8 col-lg-6 px-3">
+            <label for="cedula" class="ms-1 mb-0 form-label text-title">NIT</label>
+            <input asp-for="NIT" type="number" min="1" class="mb-4 form-control" id="cedula" placeholder="Numero de cedula">
+        </div>
+        <div class="col-12 col-md-8 col-lg-6 px-3">
+            <label for="telefono" class="ms-1 mb-0 form-label text-title">Telefono Celular</label>
+            <input asp-for="telefonoC" type="tel" min="3" class="mb-4 form-control" id="telefono" placeholder="Ejemplo: 3214825610">
+        </div>
+        <div class="col-12 col-md-8 col-lg-6 px-3">
+            <label for="telefonoFijo" class="ms-1 mb-0 form-label text-title">Telefono Fijo</label>
+            <input asp-for="telefonoF" type="tel" min="3" class="mb-4 form-control" id="telefonoFijo" placeholder="Ejemplo: 6015115115">
+        </div>
+        <div class="col-12 col-md-8 col-lg-6 px-3">
+            <label for="correo" class="ms-1 mb-0 form-label text-title">Correo</label>
+            <input asp-for="correo" type="email" min="3" class="mb-4 form-control" id="correo" placeholder="Ejemplo@ejemplo.com">
+        </div>
+        <div class="col-12 col-md-8 col-lg-6 px-3">
+            <label for="contrasena" class="ms-1 mb-0 form-label text-title">Contraseña</label>
+            <input asp-for="contrasena" type="password" min="3" class="mb-4 form-control" id="contrasena" placeholder="">
+        </div>
+        <div class="col-12 col-md-8 col-lg-6 px-3">
+            <label for="contrasenaConfirmacion" class="ms-1 mb-0 form-label text-title">Confirmar Contraseña</label>
+            <input asp-for="contrasenaConf" type="password" min="3" class="mb-4 form-control" id="contrasenaConfirmacion" placeholder="">
+        </div>
+        <div class="col-12 col-md-8 col-lg-6 px-3"></div>
+        <button class="text-title col-8 col-md-6 col-lg-4 btn btn-light px-2">
+            Registrarse
+        </button>
+    </form>
+</div>

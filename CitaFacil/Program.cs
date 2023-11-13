@@ -10,24 +10,25 @@ using CitaFacil.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<CitaFacilContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerConnection")?? throw new InvalidOperationException("Connection string 'SqlServerConnection' not found.") ));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerConnection")));
 builder.Services.AddScoped<IUsuarioService, UsuarioServices>();
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options=>
+builder.Services.AddScoped<IEmailService, EMailServices>();
+builder.Services.AddAuthentication(options =>
 {
-    options.LoginPath = "/Inicio/IniciarSesionCliente";
-    options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
-});
+    options.DefaultScheme = "CitaFacilCookie"; // Establece el esquema predeterminado
+    options.DefaultSignInScheme = "CitaFacilCookie"; // Establece el esquema para inicio de sesión
 
+})
+        .AddCookie("CitaFacilCookie", options =>
+        {
+            options.LoginPath = "/Home/Index"; // Página de inicio de sesión
+            options.AccessDeniedPath = "/Home/Index"; // Página de acceso denegado
+            options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+        });
 
-
-builder.Services.AddAuthorization(config =>
+builder.Services.AddAuthorization(options =>
 {
-    config.AddPolicy("UsuarioPolicy", policy => 
-    policy.RequireClaim("Usuario"));
-    config.AddPolicy("EmpresaPolicy", policy =>
-    policy.RequireClaim("Empresa"));
-    config.AddPolicy("AdminPolicy", policy =>
-    policy.RequireClaim("Administrador"));
+    options.AddPolicy("RequiereLogin", policy => policy.RequireAuthenticatedUser());
 });
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -37,7 +38,16 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
-    SeedData.Initialize(services);
+    try
+    {
+        var context = services.GetRequiredService<CitaFacilContext>();
+        //context.Database.EnsureDeleted();
+        //context.Database.EnsureCreated();
+        SeedData.Initialize(services);
+    }catch (SqlException ex)
+    {
+        Console.WriteLine(ex.Message);
+    }
 }
 
 // Configure the HTTP request pipeline.

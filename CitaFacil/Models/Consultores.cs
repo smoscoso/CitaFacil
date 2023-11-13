@@ -7,9 +7,9 @@ namespace CitaFacil.Models
         [Key]
         public int Id_Consultor { get; set; }
         [Required, StringLength(80)]
-        public string Nombre_Consultor { get; set; }
+        public string Nombre { get; set; }
         [Required, StringLength(80)]
-        public string Area_Servicio { get; set; }
+        public string Area { get; set; }
         [Required, StringLength(190)]
         public string Detalle { get; set; }
     }
