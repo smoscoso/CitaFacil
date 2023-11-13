@@ -279,7 +279,11 @@ namespace CitaFacil.Models
                         Celular = empresa.telefonoC,
                         Telefono = empresa.telefonoF,
                         Id_EstadoEmpresa = 4,
+<<<<<<< HEAD
                         Id_Rol = 2,
+=======
+                        Id_Rol = 3,
+>>>>>>> c56473f1decee8c3559ed27d8d1f1207e063efde
                         fecha_Registro = DateTime.Now,
                         plan = 'E',
                         Tipo = empresa.servicio,
@@ -290,6 +294,7 @@ namespace CitaFacil.Models
             return _context.SaveChanges();
         }
 
+<<<<<<< HEAD
         public bool IsUserLogin(string correo, string contrasena)
         {
             bool isUserLogin = true;
@@ -312,6 +317,16 @@ namespace CitaFacil.Models
                 throw new Exception("Correo o Contraseña Incorrectos");
             }
             return isUserLogin;
+=======
+        public string VerificarLogin(string correo, string contrasena)
+        {
+            Usuario usuario = _context.Usuario.FirstOrDefault(u => u.Correo == correo);
+            if(usuario == null || !VerifyPassword(contrasena,usuario.contraseña))
+            {
+                return "Correo o Contraseña Incorrectos";
+            }
+            return null;
+>>>>>>> c56473f1decee8c3559ed27d8d1f1207e063efde
         }
     }
 }

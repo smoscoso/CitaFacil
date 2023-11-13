@@ -4,6 +4,7 @@ using CitaFacil.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CitaFacil.Migrations
 {
     [DbContext(typeof(CitaFacilContext))]
-    partial class CitaFacilContextModelSnapshot : ModelSnapshot
+    [Migration("20231109132857_migracion2")]
+    partial class migracion2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -144,22 +147,6 @@ namespace CitaFacil.Migrations
                     b.ToTable("Estado");
                 });
 
-            modelBuilder.Entity("CitaFacil.Models.Fecha", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("fecha")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Fecha");
-                });
-
             modelBuilder.Entity("CitaFacil.Models.Pago", b =>
                 {
                     b.Property<int>("Id_Pago")
@@ -206,28 +193,6 @@ namespace CitaFacil.Migrations
                     b.ToTable("Rol");
                 });
 
-            modelBuilder.Entity("CitaFacil.Models.ServiciosNegocio", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-<<<<<<< HEAD
-
-                    b.Property<string>("Descripcion")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Nombre")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ServiciosN");
-                });
-
             modelBuilder.Entity("CitaFacil.Models.Suscripcion", b =>
                 {
                     b.Property<int>("Id")
@@ -235,8 +200,6 @@ namespace CitaFacil.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-=======
->>>>>>> c56473f1decee8c3559ed27d8d1f1207e063efde
 
                     b.Property<DateTime>("Fecha_Pago")
                         .HasColumnType("datetime2");

@@ -4,7 +4,10 @@ using CitaFacil.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+<<<<<<< HEAD
 using System.Collections.Generic;
+=======
+>>>>>>> c56473f1decee8c3559ed27d8d1f1207e063efde
 using System.Diagnostics;
 using System.Security.Claims;
 
@@ -65,6 +68,7 @@ namespace CitaFacil.Controllers
 
         public IActionResult Iniciar_Sesion(string correo, string contrasena, string recordar)
         {
+<<<<<<< HEAD
             string error = null;
             List < Claim > userClaims = null;
 
@@ -83,6 +87,20 @@ namespace CitaFacil.Controllers
                 }
 
                 var identity = new ClaimsIdentity(userClaims, "CitaFacilAutenticacion");
+=======
+            string error = _servicioCF.VerificarLogin(correo, contrasena);
+            Usuario us = _context.Usuario.Include(u => u.Roles).FirstOrDefault(u => u.Correo == correo);
+            if (string.IsNullOrEmpty(error))
+            {
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, us.Id_Usuario.ToString()),
+                    new Claim(ClaimTypes.Role, us.Roles.Nombre_Rol),
+                    new Claim("Estado",us.Id_EstadoUsuario.ToString())
+                };
+
+                var identity = new ClaimsIdentity(claims, "CitaFacilAutenticacion");
+>>>>>>> c56473f1decee8c3559ed27d8d1f1207e063efde
                 var principal = new ClaimsPrincipal(identity);
                 bool recordarU = false;
                 if (!string.IsNullOrEmpty(recordar))
@@ -97,11 +115,15 @@ namespace CitaFacil.Controllers
                 HttpContext.SignInAsync("CitaFacilCookie", principal, authenticationProperties);
                 return RedirectToAction("Index", "Home");
             }
+<<<<<<< HEAD
             catch (Exception ex)
             {
                 return RedirectToAction("Index", new { error = error });
             }
             
+=======
+            return RedirectToAction("Index", new { error = error });
+>>>>>>> c56473f1decee8c3559ed27d8d1f1207e063efde
         }
 
         public IActionResult Cerrar_Sesion()
@@ -109,6 +131,7 @@ namespace CitaFacil.Controllers
             HttpContext.SignOutAsync("CitaFacilCookie");
             return RedirectToAction("Index", "Home");
         }
+<<<<<<< HEAD
 
         private List<Claim> CreateClaims(string id, string estado, string role)
         {
@@ -121,5 +144,7 @@ namespace CitaFacil.Controllers
 
             return claims;
         }
+=======
+>>>>>>> c56473f1decee8c3559ed27d8d1f1207e063efde
     }
 }

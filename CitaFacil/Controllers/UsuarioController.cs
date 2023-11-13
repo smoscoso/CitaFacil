@@ -35,11 +35,14 @@ namespace CitaFacil.Controllers
             {
                 return RedirectToAction("EnRevision");
             }
+<<<<<<< HEAD
             else
             {
                 return RedirectToAction("Index","Cliente");
             }
                 
+=======
+>>>>>>> c56473f1decee8c3559ed27d8d1f1207e063efde
             return View();
         }
 

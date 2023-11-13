@@ -1,0 +1,150 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Planes</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+    <!--ubicacion estilo de la hoja-->
+    <link rel="stylesheet" href="~/css/styles.css">
+</head>
+<body>
+    <!-- Page Content-->
+    <div class="container px-4 px-lg-5" style="width: 100%;">
+        <!-- Call to Action-->
+        <div class="card text-white bg-secondary my-5 py-4 text-center">
+            <div class="card-body"><p class="text-white m-0">Elige el plan que mejor se acomode a tus necesidades!</p></div>
+        </div>
+        
+        <!-- Content Row-->
+        <div class="row gx-4 gx-lg-5">
+            <div class="col-md-4 mb-5">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title">Basico</h2>
+                        <p class="card-text">
+                            Precio: $50.000 COP / mes <br />
+                            Citas: 10 al día <br />
+                            Este plan es ideal para negocios pequeños que necesitan una solución sencilla para gestionar sus citas. Con este plan, los clientes podrán ver los horarios disponibles y reservar citas en línea. El negocio también podrá acceder a informes básicos para realizar un seguimiento de las citas.
+                        </p>
+                    </div>
+                    <!--Adaptacion boton para pago pay pal-->
+                    <div class="card-footer">
+                        <button class="btn btn-success btn-sm" onclick="pagar()">
+                            <i class="fab fa-paypal"></i> Realizar Pago
+                        </button>
+                        <!-- Boton para PayPal-->
+                        <input type="hidden" value="78.00" id="precio" />
+                        
+                    </div>
+         
+                </div>
+            </div>
+            <div class="col-md-4 mb-5">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title">Estandar</h2>
+                        <p class="card-text">
+                            Precio: $100.000 COP / mes <br />
+                            Citas: 50 al día<br />
+                            Áreas: 5<br />
+                            Personal: 20<br />
+                            Este plan es ideal para negocios medianos que necesitan más flexibilidad y control sobre sus citas. Con este plan, los negocios podrán registrar áreas y asignar personas a las citas. También podrán acceder a informes avanzados para realizar un seguimiento de las citas y las áreas.
+                        </p>
+                    </div>
+                    <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">Suscribir</a></div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-5">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title">Premium</h2>
+                        <p class="card-text">
+                            Precio: $200.000 COP / mes<br />
+                            Citas: 100 al día<br />
+                            Áreas: 10<br />
+                            Personas: 50<br />
+                            Este plan es ideal para negocios grandes que necesitan un servicio de alta calidad y soporte técnico. Con este plan, los negocios recibirán servicio técnico y capacitaciones para aprovechar al máximo el software.
+                        </p>
+                    </div>
+                    <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">Suscribir</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Heading Row-->
+    <div class="row gx-4 gx-lg-5 align-items-center my-5">
+        <div class="col-lg-7"><img class="img-fluid rounded mb-4 mb-lg-0" src="/img/right.png" alt="..." /></div>
+        <div class="col-lg-5">
+            <h1 class="font-weight-light">Encuentra la cita al sitio que deseas</h1>
+            <p>Explora miles de opciones y encuentra tu lugar perfecto</p>
+
+            <a class="btn btn-primary" href="#!">Inicio!</a>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+</body>
+</html>
+
+@section scripts{
+    <script>
+        function pagar(){
+            //obtener valor de texto input
+            var body = {
+                precio: $("#precio").val(),
+                producto: "Suscripcion estandar"
+            }
+            jQuery.ajax({
+                // metodo que recibe del controlador
+                url: '@Url.Action("Paypal", "ServicioPagoController")',
+                type: "POST",
+                data: JSON.stringify(body),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+
+                    console.log(data);
+                    $("div.jumbotron").LoadingOverlay("hide");
+
+                    if (data.status) {
+
+                        var jsonresult = JSON.parse(data.respuesta);
+
+                        console.log(jsonresult);
+
+                        var links = jsonresult.links;
+
+                        var resultado = links.find(item => item.rel === "approve")
+
+                        window.location.href = resultado.href
+
+                        /*console.log(links)*/
+                        /*console.log(resultado)*/
+                    } else {
+                        alert("Vuelva a intentarlo más tarde")
+                    }
+
+                },
+                beforeSend: function () {
+                    $("div.jumbotron").LoadingOverlay("show");
+                }
+            });
+
+        }
+    </script>
+}
