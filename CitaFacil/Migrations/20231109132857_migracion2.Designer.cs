@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CitaFacil.Migrations
 {
     [DbContext(typeof(CitaFacilContext))]
-    [Migration("20231108181429_arreglandoTablaEmpresas")]
-    partial class arreglandoTablaEmpresas
+    [Migration("20231109132857_migracion2")]
+    partial class migracion2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
