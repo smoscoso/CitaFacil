@@ -15,6 +15,6 @@ namespace CitaFacil.Data
         public DbSet<Pago> Pago { get; set; }
         public DbSet<Citas> Cita { get; set; }
         public DbSet<Fecha> Fecha { get; set; }
-        public DbSet<ServiciosNegocio>ServiciosN{get; set; }
+        public DbSet<ServiciosNegocio> ServiciosN {get; set; }
     }
 }

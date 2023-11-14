@@ -126,7 +126,7 @@ namespace CitaFacil.Migrations
                     b.ToTable("Empresa");
                 });
 
-            modelBuilder.Entity("CitaFacil.Models.Estados", b =>
+            modelBuilder.Entity("CitaFacil.Models.Estado", b =>
                 {
                     b.Property<int>("Id_Estado")
                         .ValueGeneratedOnAdd()
@@ -303,7 +303,7 @@ namespace CitaFacil.Migrations
 
             modelBuilder.Entity("CitaFacil.Models.Empresas", b =>
                 {
-                    b.HasOne("CitaFacil.Models.Estados", "Estados")
+                    b.HasOne("CitaFacil.Models.Estado", "Estado")
                         .WithMany()
                         .HasForeignKey("Id_EstadoEmpresa")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -315,14 +315,14 @@ namespace CitaFacil.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Estados");
+                    b.Navigation("Estado");
 
                     b.Navigation("Roles");
                 });
 
             modelBuilder.Entity("CitaFacil.Models.Usuario", b =>
                 {
-                    b.HasOne("CitaFacil.Models.Estados", "Estados")
+                    b.HasOne("CitaFacil.Models.Estado", "Estado")
                         .WithMany()
                         .HasForeignKey("Id_EstadoUsuario")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -334,7 +334,7 @@ namespace CitaFacil.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Estados");
+                    b.Navigation("Estado");
 
                     b.Navigation("Roles");
                 });

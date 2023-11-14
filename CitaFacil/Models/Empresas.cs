@@ -38,7 +38,7 @@ namespace CitaFacil.Models
         public int Id_Rol { get; set; }
         public virtual Roles? Roles { get; set; }
 
-        [ForeignKey("Estados")]
+        [ForeignKey("Estado")]
         public int Id_EstadoEmpresa { get; set; }
         public virtual Estados Estados { get; set; }
     }
