@@ -10,7 +10,7 @@ using CitaFacil.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<CitaFacilContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServerConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("SomeeConnection")));
 builder.Services.AddScoped<IUsuarioService, UsuarioServices>();
 builder.Services.AddScoped<IEmailService, EMailServices>();
 builder.Services.AddAuthentication(options =>

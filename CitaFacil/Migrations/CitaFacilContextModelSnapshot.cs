@@ -213,7 +213,6 @@ namespace CitaFacil.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-<<<<<<< HEAD
 
                     b.Property<string>("Descripcion")
                         .IsRequired()
@@ -235,8 +234,6 @@ namespace CitaFacil.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-=======
->>>>>>> c56473f1decee8c3559ed27d8d1f1207e063efde
 
                     b.Property<DateTime>("Fecha_Pago")
                         .HasColumnType("datetime2");

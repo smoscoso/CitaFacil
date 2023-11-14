@@ -9,14 +9,6 @@ using System.Text;
 using Newtonsoft.Json;    //Json to c#
 using System. Threading. Tasks; //solicitudes asincronas
 using CitaFacil.Models.PayPalOrder;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-using CitaFacil.Models.Paypal
->>>>>>> c56473f1decee8c3559ed27d8d1f1207e063efde
-=======
-using CitaFacil.Models.Paypal
->>>>>>> c56473f1decee8c3559ed27d8d1f1207e063efde
 
 namespace CitaFacil.Controllers
 {
