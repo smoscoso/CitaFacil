@@ -1,0 +1,66 @@
+﻿@{
+    ViewData["Title"] = "Home page";
+}
+
+
+<link rel="stylesheet" href="~/css/Cliente.css" asp-append-version="true" />
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>CitaFacil</title>
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/style2.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/CitaFacil.style2.css" asp-append-version="true" />
+</head>
+<head>
+    <nav class="navbar navbar-expand-sm navbar-light" id="neubar">
+    <div class="container">
+        <a class="navbar-brand" href="#"><img src="~/img/Logo.png" height="60" /></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class=" collapse navbar-collapse" >
+            <ul class="navbar-nav ms-auto ">
+                  
+                    <li class="nav-item">
+                        <a class="nav-link mx-2 active" asp-controller="Cliente" asp-action="Index">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-2 active" asp-controller="Cliente" asp-action="Calendario">Calendario de citas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link mx-2 active" asp-controller="Cliente" asp-action="Historial">Historial de citas</a>
+                    </li>
+           
+                
+                    
+
+          
+            </ul>
+        </div>
+    </div>
+    </nav>
+</head>
+<section class="home">
+    <div class="max-width">
+        <div class="home-content">
+            <h3>Busca tu <br> sitio ideal</h3>
+            <p>En CITAFACIL encuentras los mejores sitios para el cuidado de tu apariencia personal</p>
+          
+        </div>
+        <div class="home-image">
+            <img src="https://infonegocios.info/content/images/2022/08/24/332513/conversions/plus-estilistas-py-medium-size.jpg" alt="">
+        </div>
+      
+    </div>
+  
+</section>
+<a class="btn btn-danger" asp-action="Cerrar_Sesion" asp-controller="Home"> cerrar sesion </a>
+</html>
+
+
+
+

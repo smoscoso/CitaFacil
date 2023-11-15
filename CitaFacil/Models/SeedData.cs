@@ -11,22 +11,35 @@ namespace CitaFacil.Models
                 serviceProvider.GetRequiredService<DbContextOptions<CitaFacilContext>>()))
             {
                 ServiciosCitaFacil servicios = new ServiciosCitaFacil(context);
-                if (context.Estado.Any()||context.Usuario.Any() || context.Rol.Any())
+
+                if (context.Estado.Any()||context.Rol.Any())
                 {
                     return;
                 }
                 context.Estado.AddRange(
-                   new Estado
+                   new Estados
                    {
-                       estado = "Disponible"
+                       Estado = "Disponible"
                    },
-                   new Estado
+                   new Estados
                    {
-                       estado = "Ocupado"
+                       Estado = "Ocupado"
                    },
-                   new Estado
+                   new Estados
                    {
-                       estado = "Cancelado"
+                       Estado = "Cancelado"
+                   },
+                   new Estados
+                   {
+                       Estado = "En Revison"
+                   },
+                   new Estados
+                   {
+                       Estado = "Aceptado"
+                   },
+                   new Estados
+                   {
+                       Estado = "Rechazado"
                    }
                 );
                 context.SaveChanges();
@@ -51,13 +64,14 @@ namespace CitaFacil.Models
                 context.SaveChanges();
                 context.Usuario.Add(new Usuario
                 {
-                    Id_Usuario = 1,
-                    Nombre_Usuario = "Sergio Leonardo Moscoso Ramirez",
-                    contraseña = servicios.CifrarContraseña("12345678"),
+                    Nombre = "Sergio Leonardo Moscoso Ramirez",
+                    contraseña = servicios.HashPassword("12345678"),
+                    Celular = "3118613395",
                     Telefono = "3118613395",
-                    Telefono_Fijo = "3118613395",
                     Cedula = "1193224152",
-                    Id_Rol = 1
+                    Id_Rol = 1,
+                    Id_EstadoUsuario = 5,
+                    Correo = "sergiomoscoso1022@hotmail.com"
                 });
                 context.SaveChanges();
             }

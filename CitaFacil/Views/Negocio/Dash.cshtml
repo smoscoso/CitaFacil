@@ -1,0 +1,90 @@
+﻿
+<!DOCTYPE html>
+<script src="~/js/Negocio.js" defer></script>
+<link rel="stylesheet" href="~/css/Principal.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/Dash.css">
+<!-- CUSTOM JS -->
+<script src="~/js/Dash.js" defer></script>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Dashboard</title>
+    <!-- BOX ICONS -->
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <!-- CUSTOM CSS -->
+  
+</head>
+<!--nav-->
+<head>
+    <nav class="navbar navbar-expand-custom navbar-mainbg">
+        <a class="navbar-brand navbar-logo" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars text-white"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
+                <li class="nav-item">
+                    <a class="nav-link mx-2 active" asp-controller="Negocio" asp-action="Index"><i class="far fa-copy"></i>Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-2 active" asp-controller="Negocio" asp-action="CalendarioN"><i class="far fa-copy"></i>Calendario</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-2 active" asp-controller="Negocio" asp-action="Dash"><i class="far fa-copy"></i>Dash board</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</head>
+
+<body>
+
+    <div class="menu-dashboard">
+        <!-- TOP MENU -->
+        <div class="top-menu">
+            <div class="logo">
+                <img src="./img/logo.svg" alt="">
+                <span>CITAFACIL</span>
+            </div>
+            <div class="toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </div>
+        <!-- INPUT SEARCH -->
+       
+        <!-- MENU -->
+        <div class="menu">
+
+            <div class="menu">
+                <a class="enlace" href="/Dashboard/DashPerfil">
+                    <i class="bx bx-user"></i>
+                    <span>Usuario</span>
+                </a>
+
+                <a class="enlace" href="/Dashboard/DashCitas">
+                    <i class="bx bx-grid-alt"></i>
+                    <span>Citas</span>
+                </a>
+
+                <a class="enlace" href="/Dashboard/DashCaracter">
+                    <i class="bx bx-message-square"></i>
+                    <span>Características</span>
+                </a>
+                <a class="enlace" href="/Dashboard/DashServicios">
+                    <i class="bx bx-message-square"></i>
+                    <span>Características</span>
+                </a>
+
+
+                <!-- Otros enlaces... -->
+            </div>
+
+        
+        </div>
+    </div>
+
+</body>
+</html>

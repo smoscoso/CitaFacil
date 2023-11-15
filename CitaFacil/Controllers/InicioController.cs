@@ -43,7 +43,7 @@ namespace CitaFacil.Controllers
                 ViewData["Message"] = "No se encontro en el sistema";
             }
             List<Claim> claims = new List<Claim>() { 
-                new Claim(ClaimTypes.Name, clienteEncontrado.Nombre_Usuario),
+                new Claim(ClaimTypes.Name, clienteEncontrado.Nombre_Rol),
             };
             ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             AuthenticationProperties properties = new AuthenticationProperties()

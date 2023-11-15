@@ -1,0 +1,137 @@
+/* Estilos globales */
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #b59d7e, #000000);
+    color: #fff; /* Color de texto blanco */
+    font-family: Arial, sans-serif; /* Fuente de texto predeterminada */
+}
+
+/* Estilo para la barra de navegación horizontal */
+nav {
+    background: #222; /* Color de fondo oscuro para la barra de navegación */
+    padding: 10px 0;
+    width: 100%; /* Ocupa todo el ancho horizontal */
+}
+
+    nav ul {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-around; /* Distribuye los elementos horizontalmente */
+    }
+
+    nav li {
+        margin: 0 20px;
+    }
+
+    /* Estilo para los botones de navegación */
+    nav a {
+        text-decoration: none;
+        color: #fff;
+        font-weight: bold;
+    }
+
+/* Estilo para el formulario de búsqueda */
+form {
+    display: flex;
+    align-items: center;
+}
+
+#neubar {
+      background: #fae8d2;
+      box-shadow: 4px 6px 12px rgba(0,0,0,0.4)
+    }
+    
+    .nav-item .active {
+      border-radius: 6px;
+      background: linear-gradient(145deg, #ffe7ca, #f5d7b2);
+      box-shadow:  4px 4px 8px #ddc1a0,
+                   -4px -4px 8px #f7e5cc;
+    }
+    #neubar .dropdown-menu a:hover {
+      color: #454545
+    }
+    #neubar .nav-item {
+      margin : auto 4px;
+    }
+    #neubar a {
+    
+      padding-left:12px;
+      padding-right:12px;
+    }
+    #neubar .dropdown-menu {
+      background : #545454
+    }
+    a.navbar-brand {
+      color: #454545
+    }
+
+
+
+
+/* Home Section */
+.max-width {
+    max-width: 1300px;
+    padding: 0 80px;
+    margin: auto;
+}
+
+section {
+    padding: 50px 0 50px 0;
+}
+
+.home {
+    display: flex;
+}
+
+    .home .max-width {
+        width: 100%;
+        display: flex;
+    }
+
+    .home .home-content {
+        width: 50%;
+        padding: 2rem;
+    }
+
+    .home h3 {
+        color: #fff;
+        margin-top: 6rem;
+        font-size: 5rem;
+        font-family: 'Philosopher', sans-serif;
+    }
+
+    .home p {
+        color: rgb(194, 191, 191);
+        margin-top: 1rem;
+        font-size: 12px;
+    }
+
+    .home .home-image {
+        width: 50%;
+    }
+
+        .home .home-image img {
+            width: 100%;
+            height: 100%;
+        }
+.box {
+    position: relative;
+}
+
+.input {
+    padding: 10px;
+    width: 80px;
+    height: 80px;
+    background: none;
+    border: 4px solid #ffd52d;
+    border-radius: 50px;
+    box-sizing: border-box;
+    font-family: Comic Sans MS;
+    font-size: 26px;
+    color: #ffd52d;
+    outline: none;
+    transition: .5s;
+}
+

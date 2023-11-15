@@ -7,15 +7,15 @@ namespace CitaFacil.Models
     public class Citas
     {
         [Key]
-        public int Id_Cita { get; set; }
+        public int Id { get; set; }
         [Required]
-        public DateTime Fecha_Cita { get; set; }
+        public DateTime Fecha { get; set; }
         [Required]
-        public DateTime Hora_Cita { get; set; }
+        public DateTime Hora { get; set; }
         [Required]
-        public DateTime Duracion_Cita { get; set; }
+        public DateTime Duracion { get; set; }
         [Required]
-        public string Motivo_Cita { get; set; }
+        public string Motivo { get; set; }
         [Required]
         public string ubicacion { get; set; }
         [Required]

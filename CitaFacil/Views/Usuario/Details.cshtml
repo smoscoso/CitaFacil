@@ -18,10 +18,10 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nombre_Usuario)
+            @Html.DisplayNameFor(model => model.Nombre)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Nombre_Usuario)
+            @Html.DisplayFor(model => model.Nombre)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Cedula)
@@ -36,16 +36,16 @@
             @Html.DisplayFor(model => model.Correo)
         </dd>
         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Celular)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Celular)
+        </dd>
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Telefono)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Telefono)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Telefono_Fijo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Telefono_Fijo)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.contraseña)
@@ -54,10 +54,10 @@
             @Html.DisplayFor(model => model.contraseña)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Id_Rol)
+            @Html.DisplayNameFor(model => model.Roles)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Id_Rol)
+            @Html.DisplayFor(model => model.Roles.Nombre_Rol)
         </dd>
     </dl>
 </div>

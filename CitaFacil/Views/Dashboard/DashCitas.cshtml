@@ -1,0 +1,50 @@
+﻿@model CitaFacil.Models.Fecha
+
+<link rel="stylesheet" href="~/css/Principal.css" asp-append-version="true" />
+<head>
+    <nav class="navbar navbar-expand-custom navbar-mainbg">
+        <a class="navbar-brand navbar-logo" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars text-white"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
+                <li class="nav-item">
+                    <a class="nav-link mx-2 active" asp-controller="Negocio" asp-action="Index"><i class="far fa-copy"></i>Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-2 active" asp-controller="Negocio" asp-action="CalendarioN"><i class="far fa-copy"></i>Calendario</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-2 active" asp-controller="Negocio" asp-action="Dash"><i class="far fa-copy"></i>Dash board</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</head>
+
+<script>
+    // Get the selected date from the hidden input field
+    const selectedDateInput = document.getElementById("selectedDate");
+    const selectedDateDisplay = document.getElementById("selectedDateDisplay");
+
+    if (selectedDateInput.value) {
+        const selectedDate = new Date(selectedDateInput.value);
+        selectedDateDisplay.textContent = selectedDate.toDateString();
+    }
+</script>
+<h2>Fecha Seleccionada</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Fecha</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Html.DisplayFor(m => m.fecha)</td>
+        </tr>
+    </tbody>
+</table>
